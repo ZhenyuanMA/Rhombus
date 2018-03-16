@@ -1,0 +1,2 @@
+# Rhombus
+Hexo theme Rhombus
