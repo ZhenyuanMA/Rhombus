@@ -1,0 +1,30 @@
+.header
+
+  include avatar
+
+  .sitename
+    span.value: a(href="/")= config.title
+    
+
+  .nav
+    if is_home()
+      a.item(href="/")= __('Home')					
+    else
+      a.item(href="/")= __('Home')	
+    
+    if is_archive()
+      a.item(href="/archives")= __('Archive')
+    else
+      a.item(href="/archives")= __('Archive')
+    
+    if is_current('links')
+      a.item(href="/links")= __('Links')					
+    else
+      a.item(href="/links")= __('Links')
+    
+    if is_current('about')
+      a.item(href="/about")= __('About')			
+    else
+      a.item(href="/about")= __('About')	
+    
+  include datetime

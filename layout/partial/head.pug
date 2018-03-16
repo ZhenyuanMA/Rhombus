@@ -1,0 +1,19 @@
+meta(charset='UTF-8')
+meta(name='viewport', content='width=device-width, initial-scale=1.0')
+meta(http-equiv='X-UA-Compatible', content='ie=edge')
+meta(name="author", content= theme.author)
+
+title
+    block site_title
+      = config.title
+
+if page.keywords
+    meta(name="keywords", content= page.keywords)
+else
+    meta(name="keywords" content= theme.keywords)
+
+meta(name="renderer",content="webkit")
+link(rel="short icon", href="/images/avatar.png", type="image/x-icon")
+link(rel='stylesheet', href=url_for('css/normalize.css'), type="text/css")
+link(rel='stylesheet', href=url_for('css/main.css'), type="text/css")
+  

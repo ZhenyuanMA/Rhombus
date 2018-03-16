@@ -1,0 +1,52 @@
+mixin make_post(item, is_detail)
+  div(class="article "+"m"+date(item.date, 'M')+"d"+date(item.date, 'D'))
+    .title
+      if is_detail
+        .value= item.title
+      else
+        a.value(href= url_for(item.path))= item.title
+    
+    if is_detail
+      .summary!= item.content
+    else
+      .summary 
+        - var summary = item.excerpt || item.content
+        p!= summary
+
+    .extra
+      .item.date= date(item.date, 'YYYYMMDDHHSS')
+
+      if item.tags
+        - item.categories.sort('posts').each(function(item) {
+            a.tag(href=config.root + item.path, title= item.name)= item.name + " "
+        - });
+        - item.tags.sort('posts').each(function(item) {
+            a.tag(href=config.root + item.path, title= item.name)= item.name + " "
+        - });
+
+mixin postList()
+	.archive
+		- var year = 0;
+		- var change = false;
+		- var firstYear = true;
+		- page.posts.each(function (item) {
+			- var itemYear = date(item.date, 'YYYY') - 0;
+			- change = year !== itemYear;
+			- year = change ? itemYear : year;
+			if change
+				if firstYear
+					| <div class="lt">
+					!= year
+					| </div><ul class="l">
+					- firstYear = false;
+				else
+					| </ul><div class="lt">
+					!= year
+					| </div><ul class="l">
+			
+			.li
+				.lp
+					a(href= url_for(item.path), title= item.title)= item.title
+					div.pt
+						span.date= date(item.date, 'MM-DD')
+		- })

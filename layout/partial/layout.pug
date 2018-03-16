@@ -1,0 +1,14 @@
+doctype html
+html(lang='en')
+  head
+    include head
+  body
+    - var d = new Date();
+    
+    div(class="container "+"dm"+date(d, 'M')+"d"+date(d, 'D'))
+      include header
+
+      block content
+
+      include footer
+

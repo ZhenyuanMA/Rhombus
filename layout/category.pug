@@ -1,0 +1,10 @@
+extends partial/layout
+
+block site_title
+  !=  page.category
+
+block content
+  .content
+    ul.lwt
+      include mixins
+      +postList()

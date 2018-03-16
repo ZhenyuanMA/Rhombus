@@ -1,0 +1,13 @@
+extends partial/layout
+
+include mixins
+
+block site_title
+  != page.title
+
+block content
+  .content
+    .block
+      include mixins
+      +make_post(page, true)
+    

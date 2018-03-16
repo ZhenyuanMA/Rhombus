@@ -1,0 +1,10 @@
+extends partial/layout
+
+block site_title
+	!=  "归档"
+
+block content
+	.content
+		ul.lwt
+			include mixins
+			+postList()
